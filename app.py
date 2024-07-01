@@ -27,6 +27,7 @@ def post_handler():
     data = request.data.decode('utf-8')
     print("data",data)
     global raspi_data
+    time.sleep(10)
     raspi_data = data
     # split = re.split('\s+', a)
     # print("asdasdasdas",split) # should display 'bar'
@@ -44,6 +45,7 @@ def post_handler1():
     data1 = request.data.decode('utf-8')
     print("data1",data1)
     global raspi_data1
+    time.sleep(10)
     raspi_data1 = data1
     # split = re.split('\s+', a)
     # print("asdasdasdas",split) # should display 'bar'
