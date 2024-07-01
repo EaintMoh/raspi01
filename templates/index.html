@@ -37,30 +37,30 @@
 					{% endfor %}
 				</h1>
 			</div>
-			<!-- <div class="terminal1">
+			<div class="terminal1">
 				<h1 style="margin-top: -40px; margin-left: -30px">小会議室</h1>
 				<h1 id="text">
-					{% for match in text %}
+					{% for match1 in text1 %}
 					<tr style="margin-left: 10px">
 						<div class="sensor">
 							温度：
-							<div id="temperature1">{{ match.temperature }}</div>
+							<div id="temperature1">{{ match1.temperature }}</div>
 							°C
 						</div>
 						<div class="sensor">
 							湿度：
-							<div id="huminity1">{{ match.huminity }}</div>
+							<div id="huminity1">{{ match1.huminity }}</div>
 							%
 						</div>
 						<div class="sensor">
 							<div class="pressure">気圧：</div>
-							<div id="pressure1">{{ match.pressure }}</div>
+							<div id="pressure1">{{ match1.pressure }}</div>
 							hPa
 						</div>
 					</tr>
 					{% endfor %}
 				</h1>
-			</div> -->
+			</div>
 		</div>
 		<h1 style="font-size: 30px">最新チャート</h1>
 		<div class="display">
@@ -114,14 +114,25 @@
 					.then(data =>
 						data.forEach(match => {
 							console.log("match",match);
-							document.getElementById("temperature").innerHTML =
-								match.temperature;
+							document.getElementById("temperature").innerHTML = match.temperature;
 							document.getElementById("huminity").innerHTML = match.huminity;
 							document.getElementById("pressure").innerHTML = match.pressure;
-							// document.getElementById("temperature1").innerHTML =
-							// 	match.temperature;
-							// document.getElementById("huminity1").innerHTML = match.huminity;
-							// document.getElementById("pressure1").innerHTML = match.pressure;
+						}),
+					);
+			}, 10000);
+			setInterval(function () {
+				fetch("/data1")
+					.then(function (response) {
+						console.log("aaaaa",response);
+						return response.json();
+					})
+					.then(data =>
+						data.forEach(match => {
+							console.log("match",match);
+							document.getElementById("temperature1").innerHTML =
+								match.temperature;
+							document.getElementById("huminity1").innerHTML = match.huminity;
+							document.getElementById("pressure1").innerHTML = match.pressure;
 						}),
 					);
 			}, 10000);
@@ -132,14 +143,14 @@
 						labels: [],
 						datasets: [
 							{
-								label: "温度",
+								label: "開発ルーム",
 								backgroundColor: "rgb(255, 102, 0)",
 								borderColor: "rgb(255, 102, 0)",
 								data: [],
 								fill: false,
 							},
 							{
-								label: "温度",
+								label: "小会議室",
 								backgroundColor: "rgb(220,20,60)",
 								borderColor: "rgb(220,20,60)",
 								data: [],
@@ -181,11 +192,8 @@
 				};
 
 				const context = document.getElementById("canvas").getContext("2d");
-
 				const lineChart = new Chart(context, config);
-
 				const source = new EventSource("/chart-data");
-
 				source.onmessage = function (event) {
 					const data = JSON.parse(event.data);
 					if (config.data.labels.length === 12) {
@@ -206,19 +214,19 @@
 						labels: [],
 						datasets: [
 							{
-								label: "湿度",
+								label: "開発ルーム",
 								backgroundColor: "rgb(51, 102, 255)",
 								borderColor: "rgb(51, 102, 255)",
 								data: [],
 								fill: false,
 							},
-							// {
-							// 	label: "湿度",
-							// 	backgroundColor: "rgb(220,20,60)",
-							// 	borderColor: "rgb(220,20,60)",
-							// 	data: [],
-							// 	fill: false,
-							// },
+							{
+								label: "小会議室",
+								backgroundColor: "rgb(220,20,60)",
+								borderColor: "rgb(220,20,60)",
+								data: [],
+								fill: false,
+							},
 						],
 					},
 					options: {
@@ -256,10 +264,11 @@
 					if (config.data.labels.length === 12) {
 						config.data.labels.shift();
 						config.data.datasets[0].data.shift();
+						config.data.datasets[1].data.shift();
 					}
 					config.data.labels.push(data.time);
 					config.data.datasets[0].data.push(data.value);
-					// config.data.datasets[1].data.push(2343);
+					config.data.datasets[1].data.push(data.value1);
 					lineChart.update();
 				};
 			});
@@ -270,9 +279,16 @@
 						labels: [],
 						datasets: [
 							{
-								label: "気圧",
+								label: "開発ルーム",
 								backgroundColor: "rgb(0, 255, 0)",
 								borderColor: "rgb(0, 255, 0)",
+								data: [],
+								fill: false,
+							},
+							{
+								label: "小会議室",
+								backgroundColor: "rgb(220,20,60)",
+								borderColor: "rgb(220,20,60)",
 								data: [],
 								fill: false,
 							},
@@ -313,9 +329,11 @@
 					if (config.data.labels.length === 12) {
 						config.data.labels.shift();
 						config.data.datasets[0].data.shift();
+						config.data.datasets[1].data.shift();
 					}
 					config.data.labels.push(data.time);
 					config.data.datasets[0].data.push(data.value);
+					config.data.datasets[1].data.push(data.value1);
 					lineChart.update();
 				};
 			});
