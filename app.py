@@ -10,8 +10,8 @@ from flask import Flask, Response, render_template, stream_with_context, jsonify
 application = Flask(__name__)
 random.seed()  # Initialize the random number generator
 
-raspi_data = None
-raspi_data1 = None
+raspi_data = '0 0 0'
+raspi_data1 = '0 0 0'
 
 def generate_data():
     # raspberrypiData = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -104,6 +104,8 @@ def data():
         split = re.split('\s+', raspi_data)
         print("split", split)
         temperature = float(split[0])
+        if (temperature == 0):
+            return
         print("temperature", temperature)
         humidity = float(split[1])
         pressure = float(split[2])
@@ -122,6 +124,8 @@ def data1():
         split1 = re.split('\s+', raspi_data1)
         print("split", split1)
         temperature = float(split1[0])
+        if (temperature == 0):
+            return
         print("temperature", temperature)
         humidity = float(split1[1])
         pressure = float(split1[2])
@@ -138,7 +142,7 @@ def data1():
 def chart_data():
     def generate_random_data():
         data = []
-        while True:
+        while raspi_data != '0 0 0':
             nowtime = timer()
             split = re.split('\s+', raspi_data)
             split1 = re.split('\s+', raspi_data1)
@@ -166,7 +170,7 @@ def chart_data():
 @application.route('/chart-data1')
 def chart_data1(): 
     def generate_random_data():
-        while True:
+        while raspi_data != '0 0 0':
             split = re.split('\s+', raspi_data)
             split1 = re.split('\s+', raspi_data1)
             print("split", split)
@@ -184,7 +188,7 @@ def chart_data1():
 @application.route('/chart-data2')
 def chart_data2():
     def generate_random_data():
-        while True:
+        while raspi_data != '0 0 0':
             split = re.split('\s+', raspi_data)
             split1 = re.split('\s+', raspi_data1)
             print("split", split)
