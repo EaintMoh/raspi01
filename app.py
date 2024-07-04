@@ -139,8 +139,8 @@ def data1():
 @application.route('/chart-data')
 def chart_data():
     def generate_random_data():
-        data = []
-        while raspi_data != '0 0 0':
+            data = []
+        # while raspi_data != '0 0 0':
             nowtime = timer()
             split = re.split('\s+', raspi_data)
             split1 = re.split('\s+', raspi_data1)
@@ -168,7 +168,7 @@ def chart_data():
 @application.route('/chart-data1')
 def chart_data1(): 
     def generate_random_data():
-        while raspi_data != '0 0 0':
+        # while raspi_data != '0 0 0':
             split = re.split('\s+', raspi_data)
             split1 = re.split('\s+', raspi_data1)
             print("split", split)
@@ -186,7 +186,7 @@ def chart_data1():
 @application.route('/chart-data2')
 def chart_data2():
     def generate_random_data():
-        while raspi_data != '0 0 0':
+        # while raspi_data != '0 0 0':
             split = re.split('\s+', raspi_data)
             split1 = re.split('\s+', raspi_data1)
             print("split", split)
