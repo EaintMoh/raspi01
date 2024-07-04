@@ -100,7 +100,6 @@ def index():
 
 @application.route('/data')
 def data():
-    while True:
         split = re.split('\s+', raspi_data)
         print("split", split)
         temperature = float(split[0])
@@ -120,7 +119,6 @@ def data():
     
 @application.route('/data1')
 def data1():
-    while True:
         split1 = re.split('\s+', raspi_data1)
         print("split", split1)
         temperature = float(split1[0])
