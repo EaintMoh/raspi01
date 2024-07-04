@@ -159,7 +159,7 @@ def chart_data():
             json_data = json.dumps(
                 {'time': datetime.now().strftime('%H:%M:%S'), 'value': temperature, 'value1': humidity, 'value2': temperature1})
             yield f"data:{json_data}\n\n"
-            time.sleep(10)
+            # time.sleep(10)
     response = Response(stream_with_context(generate_random_data()), mimetype="text/event-stream")
     response.headers["Cache-Control"] = "no-cache"
     response.headers["X-Accel-Buffering"] = "no"
@@ -177,7 +177,7 @@ def chart_data1():
             humidity1 = float(split1[1])
             json_data = json.dumps({'time': datetime.now().strftime('%H:%M:%S'), 'value': humidity, 'value1': humidity1})
             yield f"data:{json_data}\n\n"
-            time.sleep(10)
+            # time.sleep(10)
     response = Response(stream_with_context(generate_random_data()), mimetype="text/event-stream")
     response.headers["Cache-Control"] = "no-cache"
     response.headers["X-Accel-Buffering"] = "no"
@@ -196,7 +196,7 @@ def chart_data2():
             json_data = json.dumps(
                 {'time': datetime.now().strftime('%H:%M:%S'), 'value': pressure, 'value1': pressure1})
             yield f"data:{json_data}\n\n"
-            time.sleep(10)
+            # time.sleep(10)
     response = Response(stream_with_context(generate_random_data()), mimetype="text/event-stream")
     response.headers["Cache-Control"] = "no-cache"
     response.headers["X-Accel-Buffering"] = "no"
