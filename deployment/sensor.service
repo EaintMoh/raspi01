@@ -1,0 +1,53 @@
+[Unit]
+Description=Gunicorn instance to serve sensor
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/var/www/sensor
+Environment="PATH=/var/www/sensor/.venv/bin"
+ExecStart=/var/www/sensor/.venv/bin/gunicorn --workers 3 --bind unix:sensor.sock -m 007 wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Unit]
+Description=Gunicorn instance to serve sensor
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/sensor
+Environment="PATH=/home/ubuntu/sensor/.venv/bin"
+ExecStart=/home/ubuntu/sensor/.venv/bin/gunicorn --workers 3 --bind unix:sensor.sock -m 007 wsgi:application
+
+[Install]
+WantedBy=multi-user.target
