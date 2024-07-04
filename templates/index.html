@@ -119,7 +119,7 @@
 							document.getElementById("pressure").innerHTML = match.pressure;
 						}),
 					);
-			}, );
+			}, 60000);
 			setInterval(function () {
 				fetch("/data1")
 					.then(function (response) {
@@ -135,7 +135,7 @@
 							document.getElementById("pressure1").innerHTML = match.pressure;
 						}),
 					);
-			}, );
+			}, 60000);
 			$(document).ready(function () {
 				const config = {
 					type: "line",
