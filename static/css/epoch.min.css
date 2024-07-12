@@ -3,20 +3,37 @@
 }
 
 .container{
-    width: 500px;
+    width: 600px;
     height: 200px;
 }
+
+.row {
+    width: 500px;
+}
+
+.row2 {
+    width: 500px;
+    margin-left: -0.4rem;
+}
+
+.row3 {
+    width: 500px;
+    margin-left: -0.3rem;
+}
+
 
 .terminal {
     padding: 50px;
     border: 4px solid blue;
+    border-radius: 1.5rem;
     width: 310px;
     height: 160px;
 }
 
 .terminal1 {
     padding: 50px;
-    border: 4px solid blue;
+    border: 4px solid rgb(255, 102, 0);
+    border-radius: 1.5rem;
     width: 310px;
     height: 160px;
     margin-left: 1rem;

@@ -76,7 +76,7 @@
 				</div>
 			</div>
 			<div class="container">
-				<div class="row">
+				<div class="row2">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -87,7 +87,7 @@
 				</div>
 			</div>
 			<div class="container">
-				<div class="row">
+				<div class="row2">
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
@@ -119,7 +119,7 @@
 							document.getElementById("pressure").innerHTML = match.pressure;
 						}),
 					);
-			}, 60000);
+			}, 1000);
 			setInterval(function () {
 				fetch("/data1")
 					.then(function (response) {
@@ -135,7 +135,7 @@
 							document.getElementById("pressure1").innerHTML = match.pressure;
 						}),
 					);
-			}, 60000);
+			}, 1000);
 			$(document).ready(function () {
 				const config = {
 					type: "line",
@@ -144,15 +144,15 @@
 						datasets: [
 							{
 								label: "開発ルーム",
-								backgroundColor: "rgb(255, 102, 0)",
-								borderColor: "rgb(255, 102, 0)",
+								backgroundColor: "blue",
+								borderColor: "blue",
 								data: [],
 								fill: false,
 							},
 							{
 								label: "小会議室",
-								backgroundColor: "rgb(220,20,60)",
-								borderColor: "rgb(220,20,60)",
+								backgroundColor: "rgb(255, 102, 0)",
+								borderColor: "rgb(255, 102, 0)",
 								data: [],
 								fill: false,
 							},
@@ -174,7 +174,7 @@
 									display: true,
 									scaleLabel: {
 										display: true,
-										labelString: "",
+										labelString: "温度",
 									},
 								},
 							],
@@ -196,7 +196,7 @@
 				const source = new EventSource("/chart-data");
 				source.onmessage = function (event) {
 					const data = JSON.parse(event.data);
-					if (config.data.labels.length === 12) {
+					if (config.data.labels.length === 24) {
 						config.data.labels.shift();
 						config.data.datasets[0].data.shift();
 						config.data.datasets[1].data.shift();
@@ -215,15 +215,15 @@
 						datasets: [
 							{
 								label: "開発ルーム",
-								backgroundColor: "rgb(51, 102, 255)",
-								borderColor: "rgb(51, 102, 255)",
+								backgroundColor: "blue",
+								borderColor: "blue",
 								data: [],
 								fill: false,
 							},
 							{
 								label: "小会議室",
-								backgroundColor: "rgb(220,20,60)",
-								borderColor: "rgb(220,20,60)",
+								backgroundColor: "rgb(255, 102, 0)",
+								borderColor: "rgb(255, 102, 0)",
 								data: [],
 								fill: false,
 							},
@@ -245,7 +245,7 @@
 									display: true,
 									scaleLabel: {
 										display: true,
-										labelString: "日時",
+										labelString: "湿度",
 									},
 								},
 							],
@@ -261,7 +261,7 @@
 
 				source.onmessage = function (event) {
 					const data = JSON.parse(event.data);
-					if (config.data.labels.length === 12) {
+					if (config.data.labels.length === 24) {
 						config.data.labels.shift();
 						config.data.datasets[0].data.shift();
 						config.data.datasets[1].data.shift();
@@ -280,15 +280,15 @@
 						datasets: [
 							{
 								label: "開発ルーム",
-								backgroundColor: "rgb(0, 255, 0)",
-								borderColor: "rgb(0, 255, 0)",
+								backgroundColor: "blue",
+								borderColor: "blue",
 								data: [],
 								fill: false,
 							},
 							{
 								label: "小会議室",
-								backgroundColor: "rgb(220,20,60)",
-								borderColor: "rgb(220,20,60)",
+								backgroundColor: "rgb(255, 102, 0)",
+								borderColor: "rgb(255, 102, 0)",
 								data: [],
 								fill: false,
 							},
@@ -310,7 +310,7 @@
 									display: true,
 									scaleLabel: {
 										display: true,
-										labelString: "日時",
+										labelString: "気圧",
 									},
 								},
 							],
@@ -326,7 +326,7 @@
 
 				source.onmessage = function (event) {
 					const data = JSON.parse(event.data);
-					if (config.data.labels.length === 12) {
+					if (config.data.labels.length === 24) {
 						config.data.labels.shift();
 						config.data.datasets[0].data.shift();
 						config.data.datasets[1].data.shift();
