@@ -8,7 +8,6 @@ import csv
 import sqlite3
 import matplotlib.pyplot as plt
 import japanize_matplotlib
-import mpl_finance as mpf
 
 from flask import Flask, Response, render_template, stream_with_context, jsonify, request
 
