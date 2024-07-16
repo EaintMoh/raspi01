@@ -11,24 +11,24 @@
 	</head>
 	<body>
 		<title>センサーデータ</title>
-		<h1 style="font-size: 30px">端末</h1>
-		<div class="display1">
-			<div class="terminal">
-				<h1 style="margin-top: -40px; margin-left: -30px">開発ルーム</h1>
-				<h1 id="text">
+		<h1 style="font-size: 35px ; margin-top: -0.5rem;">端末</h1>
+		<div style="display: flex ; justify-content: center;align-items: center; margin-top: -3rem;">
+			<div style="padding: 50px; border: 4px solid blue; border-radius:1.5rem ; width: 310px; height: 160px;">
+				<h1 style="margin-top: -2rem;">開発ルーム</h1>
+				<h1 id="text" >
 					{% for match in text %}
 					<tr style="margin-left: 10px">
-						<div class="sensor">
+						<div style="display: flex;">
 							温度：
 							<div id="temperature">{{ match.temperature }}</div>
 							°C
 						</div>
-						<div class="sensor">
+						<div style="display: flex;">
 							湿度：
 							<div id="huminity">{{ match.huminity }}</div>
 							%
 						</div>
-						<div class="sensor">
+						<div style="display: flex;">
 							<div class="pressure">気圧：</div>
 							<div id="pressure">{{ match.pressure }}</div>
 							hPa
@@ -37,22 +37,22 @@
 					{% endfor %}
 				</h1>
 			</div>
-			<div class="terminal1">
-				<h1 style="margin-top: -40px; margin-left: -30px">小会議室</h1>
+			<div style="padding: 50px; border: 4px solid rgb(255, 102, 0); border-radius:1.5rem ; width: 310px; height: 160px; margin-left: 1rem;">
+				<h1 style="margin-top: -2rem;">小会議室</h1>
 				<h1 id="text">
 					{% for match1 in text1 %}
 					<tr style="margin-left: 10px">
-						<div class="sensor">
+						<div style="display: flex;">
 							温度：
 							<div id="temperature1">{{ match1.temperature }}</div>
 							°C
 						</div>
-						<div class="sensor">
+						<div style="display: flex;">
 							湿度：
 							<div id="huminity1">{{ match1.huminity }}</div>
 							%
 						</div>
-						<div class="sensor">
+						<div style="display: flex;">
 							<div class="pressure">気圧：</div>
 							<div id="pressure1">{{ match1.pressure }}</div>
 							hPa
@@ -62,7 +62,13 @@
 				</h1>
 			</div>
 		</div>
-		<h1 style="font-size: 30px">最新チャート</h1>
+		<h1 style="font-size: 35px; margin-top: -0.5rem;">最新チャート</h1>
+		<div style="display: flex; justify-content: center; align-items: center;">
+			<img src="images/img.png" style="width: 485px; margin-top: -2rem;">
+			<img src="images/img1.png" style="width: 485px; margin-top: -2rem;">
+			<img src="images/img2.png" style="width: 485px; margin-top: -2rem;">
+		</div>
+		<!-- <h1 style="font-size: 30px">最新チャート</h1>
 		<div class="display">
 			<div class="container">
 				<div class="row">
@@ -98,7 +104,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!--suppress JSUnresolvedLibraryURL -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<!--suppress JSUnresolvedLibraryURL -->
@@ -327,7 +333,7 @@
 
 				source.onmessage = function (event) {
 					const data = JSON.parse(event.data);
-					if (config.data.labels.length === 24) {
+					if (config.data.labels.length === 10) {
 						config.data.labels.shift();
 						config.data.datasets[0].data.shift();
 						config.data.datasets[1].data.shift();
