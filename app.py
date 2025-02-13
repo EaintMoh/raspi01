@@ -188,7 +188,7 @@ def generate_data():
     # raspberrypiData = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # raspberrypiData.connect(('192.168.11.90', 5000)) read/write
     # data_decode = (raspberrypiData.recv(1024).decode('utf-8'))
-    # print("data_decode", data_decode)
+    # print("data_decode", data_decode) 
     data_decode = "25.0 50.0 1013.25"
     return data_decode
 
@@ -199,7 +199,7 @@ def post_handler():
     time.sleep(1)
     nowtime = timer()
     split = re.split('\s+', data)
-    # print("split", split)
+    # print("split", split)  
     temperature = float(split[0])
     humidity = float(split[1])
     pressure = float(split[2])
@@ -242,7 +242,7 @@ def post_handler():
     # print("sensor", sensor)
     
     # split = re.split('\s+', a)
-    # print("asdasdasdas",split) # should display 'bar'
+    # print("asdasdasdas",split) # should 　display 'bar'
     # temperature = (split[0])
     # sensor = [
     #         {
@@ -288,8 +288,8 @@ def index():
     pressure1 = float(split1[2])
     sensor = [
         {
-            "temperature": temperature,
-            "huminity": humidity,
+            "temperature": temperature,      
+            "huminity": humidity,  
             "pressure": pressure
         }
     ]

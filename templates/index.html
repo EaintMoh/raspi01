@@ -64,7 +64,7 @@
 		</div>
 		<h1 style="font-size: 35px; margin-top: -0.5rem;">最新チャート</h1>
 		<div style="display: flex; justify-content: center; align-items: center;">
-			<img src="images/img.png" style="width: 485px; margin-top: -2rem;">
+			<div style="margin-left: 4rem;"><img src="images/img.png" style="width: 485px; margin-top: -2rem;"></div>
 			<img src="images/img1.png" style="width: 485px; margin-top: -2rem;">
 			<img src="images/img2.png" style="width: 485px; margin-top: -2rem;">
 		</div>
@@ -127,7 +127,7 @@
 						}),
 					);
 			}, 1000);
-			setInterval(function () {
+			setInterval(function () {  
 				fetch("/data1")
 					.then(function (response) {
 						console.log("aaaaa",response);
@@ -235,7 +235,7 @@
 								fill: false,
 							},
 						],
-					},
+					},		
 					options: {
 						responsive: true,
 						tooltips: {
